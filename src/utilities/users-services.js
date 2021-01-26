@@ -1,4 +1,4 @@
-import * as usersAPI from './user-api';
+import * as usersAPI from './users-api';
 
 export async function signUp(userData) {
     try {
