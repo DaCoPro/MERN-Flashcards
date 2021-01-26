@@ -10,23 +10,24 @@ import NavBar from '../../components/NavBar/NavBar';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
+
   return (
     <main className="App">
       { user ? 
-        <>
-          <NavBar />
-          <Switch>
-            <Route path="/orders/new">
-              <NewOrderPage />
-            </Route>
-            <Route path="/orders">
-              <OrderHistoryPage />
-            </Route>
-            <Redirect to="/orders" />
-          </Switch>
-        </>
+          <>
+            <NavBar  user={user} setUser={setUser} />
+            <Switch>
+              <Route path="/orders/new">
+                <NewOrderPage />
+              </Route>
+              <Route path="/orders">
+                <OrderHistoryPage />
+              </Route>
+              <Redirect to="/orders" />
+            </Switch>
+          </>
         :
-        <AuthPage />
+          <AuthPage setUser={setUser}/>
       }
     </main>
   );
