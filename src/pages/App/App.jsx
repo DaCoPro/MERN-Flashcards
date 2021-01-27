@@ -19,7 +19,7 @@ export default function App() {
             <NavBar  user={user} setUser={setUser} />
             <Switch>
               <Route path="/home">
-                <WelcomePage />
+                <WelcomePage user={user}/>
               </Route>
               <Route path="/decks">
                 <DecksPage />

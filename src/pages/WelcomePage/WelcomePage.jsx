@@ -1,3 +1,9 @@
-export default function WelcomePage () {
-    return <h1>Welcome Page</h1>
+
+
+export default function WelcomePage ({ user }) {
+    return (
+        <main>
+            <h1>Welcome, {user.name}</h1>
+        </main>
+    );
 }
