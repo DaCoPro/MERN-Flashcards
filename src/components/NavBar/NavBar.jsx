@@ -21,7 +21,7 @@ export default function NavBar({ setUser }) {
           <div className="bar3"></div>
         </div>
       </nav>
-      { showItems > 0 ? <NavItems setUser={setUser} /> : null }
+      { showItems > 0 ? <NavItems setUser={setUser} showItems={showItems} setShowItems={setShowItems} /> : null }
     </>
 
   );
