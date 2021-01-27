@@ -1,7 +1,7 @@
 .NavBar {
     /* Link Arrangement */
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     /* NavArea Styling */
     background-color: whitesmoke;
@@ -9,6 +9,7 @@
 }
 
 .NavBar > a {
+    color: black;
     text-decoration: none;
     font-family: 'Merriweather', serif;
 }
@@ -23,8 +24,15 @@
     margin: 6px 0;
     transition: 0.4s;
 }
+.Logo {
+    padding-left: 50px;
+}
+.container {
+    padding-right: 50px;
+}
 
-/* Rotate first bar */
+/* For Bar Graphic at some point */
+Rotate first bar
 .change .bar1 {
     -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
     transform: rotate(-45deg) translate(-9px, 6px) ;
