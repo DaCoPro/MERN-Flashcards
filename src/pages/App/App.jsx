@@ -10,7 +10,9 @@ import WelcomePage from '../WelcomePage/WelcomePage';
 import StudyPage from '../StudyPage/StudyPage';
 
 export default function App() {
+  //Set State
   const [user, setUser] = useState(getUser());
+  const [deck, setDeck] = useState([]);
 
   return (
     <main className="App">
@@ -22,7 +24,7 @@ export default function App() {
                 <WelcomePage user={user}/>
               </Route>
               <Route path="/decks">
-                <DecksPage />
+                <DecksPage deck={deck} setDeck={setDeck}/>
               </Route>
               <Route path="/study">
                 <StudyPage />
@@ -30,7 +32,7 @@ export default function App() {
               <Route path="/edit">
                 <EditCardPage />
               </Route>
-              <Redirect to="/home" />
+              <Redirect to="/home" user={user}/>
             </Switch>
           </>
         :
