@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
 import * as decksAPI from '../../utilities/decks-api';
@@ -9,19 +9,20 @@ import DecksPage from '../DecksPage/DecksPage';
 import NavBar from '../../components/NavBar/NavBar';
 import WelcomePage from '../WelcomePage/WelcomePage';
 import StudyPage from '../StudyPage/StudyPage';
+import AddDeckPage from '../AddDeckPage/AddDeckpage';
 
 export default function App() {
   //Set State
   const [user, setUser] = useState(getUser());
   const [deck, setDeck] = useState([]);
+  const categoriesRef = useRef([]);
 
-  useEffect(function() {
-    async function getDecks() {
-      const decks = await decksAPI.getAll();
-      setDeck(decks);
-    }
-    getDecks();
-  }, []);
+  
+
+  async function handleAddDeck (newDeckData) {
+    const newDeck = await decksAPI.create(newDeckData);
+    setDeck([...deck, newDeck])
+  }
 
   return (
     <main className="App">
@@ -33,13 +34,16 @@ export default function App() {
                 <WelcomePage user={user}/>
               </Route>
               <Route path="/decks">
-                <DecksPage deck={deck} setDeck={setDeck}/>
+                <DecksPage deck={deck} setDeck={setDeck} categoriesRef={categoriesRef}/>
               </Route>
               <Route path="/study">
                 <StudyPage />
               </Route>
               <Route path="/edit">
                 <EditCardPage />
+              </Route>
+              <Route path="/createdeck">
+                <AddDeckPage handleAddDeck={handleAddDeck} />
               </Route>
               <Redirect to="/home" user={user}/>
             </Switch>

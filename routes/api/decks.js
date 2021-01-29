@@ -3,6 +3,7 @@ const router = express.Router();
 const decksCtrl = require('../../controllers/api/decks');
 
 router.get('/', decksCtrl.index);
+router.post('/', decksCtrl.create);
 
 
 module.exports = router;

@@ -12,7 +12,7 @@ export function login(credentials) {
 
 // Again, this is for testing purposes only, you don't need it
 export function checkToken() {
-  return sendRequest(`${BASE_URL}/check-token`);
+  return sendRequest(`${BASE_URL}/check-token`, 'GET');
 }
 
 /*--- Helper Functions ---*/

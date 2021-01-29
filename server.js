@@ -22,6 +22,8 @@ app.use(express.static(path.join(__dirname, 'build')));
 app.use(require('./config/checkToken'));
 
 // Put API routes here, before the "catch all" route
+const ensureLoggedIn = require('./config/ensureLoggedIn');
+app.use('/api/decks', ensureLoggedIn, require('./routes/api/decks'));
 app.use('/api/users', require('./routes/api/users'));
 
 // The following "catch all" route (note the *) is necessary
