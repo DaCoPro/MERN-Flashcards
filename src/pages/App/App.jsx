@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
+import * as decksAPI from '../../utilities/decks-api';
 import './App.css';
 import AuthPage from '../AuthPage/AuthPage';
 import EditCardPage from '../EditCardPage/EditCardPage';
@@ -13,6 +14,14 @@ export default function App() {
   //Set State
   const [user, setUser] = useState(getUser());
   const [deck, setDeck] = useState([]);
+
+  useEffect(function() {
+    async function getDecks() {
+      const decks = await decksAPI.getAll();
+      setDeck(decks);
+    }
+    getDecks();
+  }, []);
 
   return (
     <main className="App">

@@ -1,10 +1,13 @@
 import './DeckList.css';
+import DeckListItem from '../DeckListItem/DeckListItem';
 
 export default function DeckList({ deck, setDeck }) {
+    const showDecks = deck.map(item => 
+        <DeckListItem key={item._id} route={item} />
+    );
     return (
         <div>
-            <h1>Deck List</h1>
-            <h2>{deck.name}</h2>
+           {showDecks} 
         </div>
     )
 }

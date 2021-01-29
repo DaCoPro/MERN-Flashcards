@@ -5,9 +5,7 @@ module.exports = {
 };
 
 async function index(req, res) {
-  const decks = await Deck.find({}).exec();
-  // re-sort based upon the sortOrder of the categories
-//   items.sort((a, b) => a.category.sortOrder - b.category.sortOrder);
-  res.json(decks);
+    const decks = await Deck.find({});
+    res.status(200).json(decks);
 }
 
