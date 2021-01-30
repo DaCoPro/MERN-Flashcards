@@ -6,11 +6,6 @@ export function getAll() {
     return sendRequest(BASE_URL);
 }
 
-export function create(deck) {
-    return fetch(BASE_URL, {
-      method: 'POST',
-      headers: {'content-type': 'application/json'},
-      body: JSON.stringify(deck)
-    }).then(res => res.json());
+export function create(deckData) {
+    return sendRequest(BASE_URL, "POST", deckData);
 }
-  

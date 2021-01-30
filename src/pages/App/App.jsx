@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
 import * as decksAPI from '../../utilities/decks-api';
@@ -15,9 +15,17 @@ export default function App() {
   //Set State
   const [user, setUser] = useState(getUser());
   const [deck, setDeck] = useState([]);
-  const categoriesRef = useRef([]);
-
   
+  useEffect(function() {
+    async function getDecks() {
+      
+        const decks = await decksAPI.getAll();
+        setDeck(decks);
+      
+    }
+    getDecks();
+    console.log(deck);  
+  }, []);
 
   async function handleAddDeck (newDeckData) {
     const newDeck = await decksAPI.create(newDeckData);
@@ -34,7 +42,7 @@ export default function App() {
                 <WelcomePage user={user}/>
               </Route>
               <Route path="/decks">
-                <DecksPage deck={deck} setDeck={setDeck} categoriesRef={categoriesRef}/>
+                <DecksPage deck={deck} setDeck={setDeck}/>
               </Route>
               <Route path="/study">
                 <StudyPage />
