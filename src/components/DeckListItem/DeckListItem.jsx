@@ -2,6 +2,10 @@
 
 export default function DeckListItem({ deck, deckList}) {
     return (
-        <h2>{deck.name}</h2>
+        <div>
+            <h2>{deck.name}</h2>
+            
+        </div>
+        
     )
 }

@@ -18,6 +18,10 @@ const deckSchema = new Schema({
 });
 
 
+deckSchema.statics.getAll = async function (userId) {
+    return this.find({user : userId})
+}
+
 
 module.exports = mongoose.model('Deck', deckSchema);
 
