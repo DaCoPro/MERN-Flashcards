@@ -23,6 +23,7 @@ app.use(require('./config/checkToken'));
 
 // Put API routes here, before the "catch all" route
 const ensureLoggedIn = require('./config/ensureLoggedIn');
+app.use('/api/categories', ensureLoggedIn, require('./routes/api/categories'));
 app.use('/api/decks', ensureLoggedIn, require('./routes/api/decks'));
 app.use('/api/users', require('./routes/api/users'));
 

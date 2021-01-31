@@ -18,12 +18,14 @@ export default function App() {
   
   useEffect(function() {
     async function getDecks() {
-      const decks = await decksAPI.getAll();
-      setDeck(decks);
+      if (user) {
+        const decks = await decksAPI.getAll();
+        setDeck(decks);
+      }
     }
     getDecks();
     console.log(deck);  
-  }, []);
+  }, [user]);
 
   async function handleAddDeck (newDeckData) {
     const newDeck = await decksAPI.createDeck(newDeckData);

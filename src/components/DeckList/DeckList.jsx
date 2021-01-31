@@ -9,6 +9,7 @@ export default function DeckList({ deck, setDeck }) {
     return (
         
         <main className="DeckList">
+            <h2>Decks:</h2>
             <div>
                 {showDecks} 
             </div>

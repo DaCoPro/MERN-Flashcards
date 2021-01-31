@@ -14,7 +14,8 @@ const Deck = require('./models/deck');
 
     await Category.deleteMany({});
     const categories = await Category.create([
-        {name: 'Etc.'}
+        {name: 'Etc.',
+        user: users[0]}
     ]);
 
     await Deck.deleteMany({});
