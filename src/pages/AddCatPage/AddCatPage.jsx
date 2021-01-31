@@ -1,7 +1,7 @@
 import {React, useState, useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
-export default function AddDeckPage({ activeCat, handleAddDeck, user }){
+export default function AddCatPage({ handleAddCat, user }){
   const history = useHistory();
   const [invalidForm, setValidForm] = useState(true);
   const [formData, setFormData] = useState({
@@ -16,12 +16,9 @@ export default function AddDeckPage({ activeCat, handleAddDeck, user }){
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    formData.category = "6015f4ab33533a47d7e7aa05";
-    formData.cards = [];
     formData.user = user._id;
-
     console.log(formData);
-    handleAddDeck(formData);
+    handleAddCat(formData);
     history.push('/decks');
   }
 
@@ -32,14 +29,12 @@ export default function AddDeckPage({ activeCat, handleAddDeck, user }){
     })
   }
 
-  console.log(activeCat);
-
   return (
     <>
-      <h1>New Deck</h1>
+      <h1>New Category</h1>
       <form autoComplete="off" ref={formRef} onSubmit={handleSubmit}>
         <div className="form-group">
-          <label>Deck Name</label>
+          <label>Subject Name</label>
           <input
             className="form-control"
             name="name"

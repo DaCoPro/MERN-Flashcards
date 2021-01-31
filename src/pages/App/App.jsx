@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
 import * as decksAPI from '../../utilities/decks-api';
+import * as catsAPI from '../../utilities/cats-api';
 import './App.css';
 import AuthPage from '../AuthPage/AuthPage';
 import EditCardPage from '../EditCardPage/EditCardPage';
@@ -10,11 +11,14 @@ import NavBar from '../../components/NavBar/NavBar';
 import WelcomePage from '../WelcomePage/WelcomePage';
 import StudyPage from '../StudyPage/StudyPage';
 import AddDeckPage from '../AddDeckPage/AddDeckpage';
+import AddCatPage from '../AddCatPage/AddCatPage';
 
 export default function App() {
   //Set State
   const [user, setUser] = useState(getUser());
   const [deck, setDeck] = useState([]);
+  const [cats, setCats] = useState([]);
+  const [activeCat, setActiveCat] = useState('');
   
   useEffect(function() {
     async function getDecks() {
@@ -32,6 +36,11 @@ export default function App() {
     setDeck([...deck, newDeck])
   }
 
+  async function handleAddCat (newCatData) {
+    const newCat = await catsAPI.createCat(newCatData);
+    setCats([...cats, newCat])
+  }
+
   return (
     <main className="App">
       { user ? 
@@ -42,7 +51,16 @@ export default function App() {
                 <WelcomePage user={user}/>
               </Route>
               <Route path="/decks">
-                <DecksPage deck={deck} setDeck={setDeck}/>
+                <DecksPage 
+                  deck={deck} 
+                  setDeck={setDeck} 
+                  cats={cats} 
+                  setCats={setCats}
+                  activeCat={activeCat}
+                  setActiveCat={setActiveCat}
+                  user={user}
+                  handleAddCat={handleAddCat}
+                />
               </Route>
               <Route path="/study">
                 <StudyPage />
@@ -51,7 +69,10 @@ export default function App() {
                 <EditCardPage />
               </Route>
               <Route path="/createdeck">
-                <AddDeckPage handleAddDeck={handleAddDeck} user={user} />
+                <AddDeckPage activeCat={activeCat} handleAddDeck={handleAddDeck} user={user} />
+              </Route>
+              <Route path="/createcategory">
+                <AddCatPage handleAddCat={handleAddCat} user={user} />
               </Route>
               <Redirect to="/home" user={user}/>
             </Switch>

@@ -1,31 +1,31 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './CategoriesList';
 import CategoriesListItem from '../CategoriesListItem/CategoriesListItem';
+import AddCat from '../AddCat/AddCat';
 
 export default function CategoriesList(props) {
-    // const showCats = props.cats.map(item => 
-    //     <CategoriesListItem key={item._id} cat={item} />
-    // );
+    const [showAddCat, setShowAddCat] = useState(-1);
+    const handleAddCatClick = () => setShowAddCat(showAddCat * -1)
 
     const cats = props.cats.map(cat =>
         <li
-          key={cat}
+          key={cat._id}
           className={cat === props.activeCat ? 'active' : ''}
-          // FYI, the below will also work, but will give a warning
-          // className={cat === activeCat && 'active'}
           onClick={() => props.setActiveCat(cat._id)}
         >
           {cat.name}
         </li>
     );
     return (
-        
         <main className="CategoriesList">
             <h2>Subjects:</h2>
             <div>
                  {cats}
             </div>
             <div>
-                {/* <Link to="/createdeck">+</Link> */}
+                <button onClick={handleAddCatClick}></button>
+                { showAddCat > 0 ? <AddCat user={props.user} showAddCat={showAddCat} setShowAddCat={setShowAddCat} activeCat={props.activeCat} handleAddCat={props.handleAddCat} /> : null }
             </div>
         </main>
     )
