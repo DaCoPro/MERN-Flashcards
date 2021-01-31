@@ -29,7 +29,6 @@ export default function App() {
       }
     }
     getDecks();
-    console.log(deck);  
   }, [user]);
 
   async function handleAddDeck (newDeckData) {

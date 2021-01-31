@@ -8,11 +8,17 @@ export default function CategoriesList(props) {
     const [showAddCat, setShowAddCat] = useState(-1);
     const handleAddCatClick = () => setShowAddCat(showAddCat * -1)
 
+    async function handlePickCat(cat) {
+        props.setActiveCat(cat);
+        props.setActiveDeck("")
+    }
+
     const cats = props.cats.map(cat =>
         <li
           key={cat._id}
           className={cat === props.activeCat ? 'active' : ''}
-          onClick={() => props.setActiveCat(cat._id)}
+          onClick={() => handlePickCat(cat._id)}
+        //   onClick={() => props.setActiveDeck("")}
         >
           {cat.name}
         </li>

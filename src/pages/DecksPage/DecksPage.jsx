@@ -18,7 +18,6 @@ export default function DecksPage({ activeDeck, setActiveDeck, handleAddDeck, us
           setCats(cats);
         }
         getCats();
-        console.log(cats) 
     }, []);
     
     
@@ -35,6 +34,7 @@ export default function DecksPage({ activeDeck, setActiveDeck, handleAddDeck, us
                     setActiveCat={setActiveCat}
                     user={user}
                     handleAddCat={handleAddCat}
+                    setActiveDeck={setActiveDeck}
                 />
             </div>
             <div>
@@ -47,9 +47,9 @@ export default function DecksPage({ activeDeck, setActiveDeck, handleAddDeck, us
                 />
             </div>
             <div>
-                <CardList 
+                <CardList  
+                    
                     activeDeck={activeDeck}  
-                    deck={deck.filter(item => item._id === activeDeck._id)}  
                 />
             </div>
         </main>

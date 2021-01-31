@@ -29,7 +29,7 @@ export default function DeckList({ setActiveDeck, deck, setDeck, user, handleAdd
             </div>
             <div>
             <button onClick={handleAddDeckClick}></button>
-                { showAddDeck > 0 ? <AddDeck user={user} showAddDeck={showAddDeck} setShowAddDeck={setShowAddDeck} activeCat={activeCat} handleAddDeck={handleAddDeck} /> : null }
+            { showAddDeck > 0 ? <AddDeck user={user} showAddDeck={showAddDeck} setShowAddDeck={setShowAddDeck} activeCat={activeCat} handleAddDeck={handleAddDeck} /> : null }
             </div>
         </main>
     )

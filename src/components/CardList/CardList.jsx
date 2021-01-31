@@ -1,12 +1,30 @@
 import './CardList';
 
-export default function CardList({ deck, activeDeck }) {
+export default function CardList({ activeDeck }) {
 
-    console.log(deck)
+  
+    let cards = [];
+    if (activeDeck) {
+
+        const cardsArray = activeDeck.cards;
+        cards = cardsArray.map(card =>
+            <li
+            key={card._id}
+            >
+            {card.question}
+            </li>
+        );
+        
+    }
+
 
     return (
-
-        <h2>{deck.cards}</h2>
+        <main>
+            <h2>Cards:</h2>
+            <div>
+                {cards}
+            </div>
+        </main>
 
     )
 }
