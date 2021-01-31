@@ -1,7 +1,12 @@
 import './CardList';
 
-export default function CardList() {
+export default function CardList({ deck, activeDeck }) {
+
+    console.log(deck)
+
     return (
-        <h2>Cards:</h2>
+
+        <h2>{deck.cards}</h2>
+
     )
 }

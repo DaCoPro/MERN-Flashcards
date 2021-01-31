@@ -19,6 +19,7 @@ export default function App() {
   const [deck, setDeck] = useState([]);
   const [cats, setCats] = useState([]);
   const [activeCat, setActiveCat] = useState('');
+  const [activeDeck, setActiveDeck] = useState('');
   
   useEffect(function() {
     async function getDecks() {
@@ -60,6 +61,9 @@ export default function App() {
                   setActiveCat={setActiveCat}
                   user={user}
                   handleAddCat={handleAddCat}
+                  handleAddDeck={handleAddDeck}
+                  activeDeck={activeDeck}
+                  setActiveDeck={setActiveDeck}
                 />
               </Route>
               <Route path="/study">
@@ -68,12 +72,7 @@ export default function App() {
               <Route path="/edit">
                 <EditCardPage />
               </Route>
-              <Route path="/createdeck">
-                <AddDeckPage activeCat={activeCat} handleAddDeck={handleAddDeck} user={user} />
-              </Route>
-              <Route path="/createcategory">
-                <AddCatPage handleAddCat={handleAddCat} user={user} />
-              </Route>
+              
               <Redirect to="/home" user={user}/>
             </Switch>
           </>
