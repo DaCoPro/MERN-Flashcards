@@ -16,7 +16,7 @@ export default function AddDeckPage({ handleAddDeck, user }){
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    formData.category = "6013389f4eca8ffdbe4856cb";
+    formData.category = "6015f4ab33533a47d7e7aa05";
     formData.cards = [];
     formData.user = user._id;
 

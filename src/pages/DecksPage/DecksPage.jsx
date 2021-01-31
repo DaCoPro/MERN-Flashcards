@@ -9,6 +9,7 @@ import { useState, useEffect, useRef } from 'react';
 
 export default function DecksPage({ deck, setDeck }) {
     const [cats, setCats] = useState([]);
+    const [activeCat, setActiveCat] = useState('');
     const categoriesRef = useRef([]);
 
     useEffect(function() {
@@ -19,14 +20,20 @@ export default function DecksPage({ deck, setDeck }) {
         getCats();
         console.log(cats) 
     }, []);
-
+    
     return (
         <main className="DecksPage">
             <div>
-                <CategoriesList cats={cats} setCats={setCats} />
+                <CategoriesList 
+                    categories={categoriesRef.current}
+                    cats={cats} 
+                    setCats={setCats} 
+                    activeCat={activeCat}
+                    setActiveCat={setActiveCat}
+                />
             </div>
             <div>
-                <DeckList deck={deck} setDeck={setDeck}/>
+                <DeckList deck={deck.filter(item => item.category === activeCat)} />
             </div>
             <div>
                 <CardList />
@@ -34,3 +41,4 @@ export default function DecksPage({ deck, setDeck }) {
         </main>
     );
 }
+// 
