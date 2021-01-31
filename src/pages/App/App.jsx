@@ -18,17 +18,15 @@ export default function App() {
   
   useEffect(function() {
     async function getDecks() {
-      
-        const decks = await decksAPI.getAll();
-        setDeck(decks);
-      
+      const decks = await decksAPI.getAll();
+      setDeck(decks);
     }
     getDecks();
     console.log(deck);  
   }, []);
 
   async function handleAddDeck (newDeckData) {
-    const newDeck = await decksAPI.create(newDeckData);
+    const newDeck = await decksAPI.createDeck(newDeckData);
     setDeck([...deck, newDeck])
   }
 
@@ -51,7 +49,7 @@ export default function App() {
                 <EditCardPage />
               </Route>
               <Route path="/createdeck">
-                <AddDeckPage handleAddDeck={handleAddDeck} />
+                <AddDeckPage handleAddDeck={handleAddDeck} user={user} />
               </Route>
               <Redirect to="/home" user={user}/>
             </Switch>

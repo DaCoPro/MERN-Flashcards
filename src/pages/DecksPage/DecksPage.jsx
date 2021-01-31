@@ -8,13 +8,6 @@ export default function DecksPage({ deck, setDeck }) {
 
     const categoriesRef = useRef([]);
 
-    
-    
-    async function handleAddDeck (newDeckData) {
-        const newDeck = await decksAPI.create(newDeckData);
-        setDeck([...deck, newDeck])
-    }
-
     return (
         <main className="DecksPage">
             <div>

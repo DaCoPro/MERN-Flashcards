@@ -1,10 +1,11 @@
 import {React, useState, useRef, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
-export default function AddDeckPage(props){
+export default function AddDeckPage({ handleAddDeck, user }){
+  const history = useHistory();
   const [invalidForm, setValidForm] = useState(true);
   const [formData, setFormData] = useState({
     name: '',
-    
   })
 
   const formRef = useRef();
@@ -15,7 +16,13 @@ export default function AddDeckPage(props){
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    props.handleAddDeck(formData);
+    formData.category = "6013389f4eca8ffdbe4856cb";
+    formData.cards = [];
+    formData.user = user._id;
+
+    console.log(formData);
+    handleAddDeck(formData);
+    history.push('/decks');
   }
 
   const handleChange = (e) => {
