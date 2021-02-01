@@ -9,3 +9,7 @@ export function getAll() {
 export function createCat(catData) {
     return sendRequest(BASE_URL, "POST", catData);
 }
+
+export function deleteCat(catData) {
+    return sendRequest(`${BASE_URL}/${catData._id}`, "DELETE");
+}

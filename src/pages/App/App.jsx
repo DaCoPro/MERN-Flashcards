@@ -10,8 +10,6 @@ import DecksPage from '../DecksPage/DecksPage';
 import NavBar from '../../components/NavBar/NavBar';
 import WelcomePage from '../WelcomePage/WelcomePage';
 import StudyPage from '../StudyPage/StudyPage';
-import AddDeckPage from '../AddDeckPage/AddDeckpage';
-import AddCatPage from '../AddCatPage/AddCatPage';
 
 export default function App() {
   //Set State

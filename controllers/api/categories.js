@@ -2,7 +2,8 @@ const Category = require('../../models/category');
 
 module.exports = {
   index,
-  createCat
+  createCat,
+  deleteCat
 };
 
 async function index(req, res) {
@@ -16,4 +17,10 @@ async function createCat(req, res) {
   let catData = req.body;
   let newCat = await Category.create(catData);
   return res.json(newCat)
+}
+
+async function deleteCat(req, res) {
+  const removedCat = await Category.findByIdAndRemove(req.params.id);
+  console.log(req.params.id)
+  res.status(200).json(removedCat);
 }

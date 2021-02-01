@@ -40,17 +40,19 @@ export default function DecksPage({ handleAddCard, activeDeck, setActiveDeck, ha
             <div>
                 <DeckList 
                     handleAddDeck={handleAddDeck} 
-                    user={user} deck={deck.filter(item => item.category === activeCat)} 
+                    user={user} deck={deck.filter(item => item.category === activeCat._id)} 
                     activeCat={activeCat} 
                     activeDeck={activeDeck}
                     setActiveDeck={setActiveDeck}
+                    setCats={setCats}
                 />
             </div>
             <div>
                 <CardList  
                     handleAddCard={handleAddCard}
                     activeDeck={activeDeck}
-                    user={user}  
+                    user={user} 
+                    setDeck={setDeck} 
                 />
             </div>
         </main>

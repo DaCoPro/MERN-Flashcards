@@ -13,3 +13,7 @@ export function createDeck(newDeckData) {
 export function createCard(newCardData) {
     return sendRequest(`${BASE_URL}/${newCardData.deck}/addCard`, "PUT", newCardData)
 }
+
+export function deleteDeck(deckData) {
+    return sendRequest(`${BASE_URL}/${deckData._id}`, "DELETE");
+}

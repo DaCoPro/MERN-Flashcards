@@ -1,7 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import './CategoriesList';
-import CategoriesListItem from '../CategoriesListItem/CategoriesListItem';
 import AddCat from '../AddCat/AddCat';
 
 export default function CategoriesList(props) {
@@ -17,7 +15,7 @@ export default function CategoriesList(props) {
         <li
           key={cat._id}
           className={cat === props.activeCat ? 'active' : ''}
-          onClick={() => handlePickCat(cat._id)}
+          onClick={() => handlePickCat(cat)}
         //   onClick={() => props.setActiveDeck("")}
         >
           {cat.name}
