@@ -24,9 +24,9 @@ export default function CardList({ activeCard, setActiveCard, cards, setCards, a
 
     async function handleDeleteDeck() {
         await decksAPI.deleteDeck(activeDeck);
-        // await cardsAPI.deleteChildCards(activeDeck);
+        await cardsAPI.deleteChildCards(activeDeck);
         const decks = await decksAPI.getAll();
-        // const cards = await cardsAPI.getAll();
+        const cards = await cardsAPI.getAll();
         setDeck(decks);
         setCards(cards);
         setActiveDeck('');

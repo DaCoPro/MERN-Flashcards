@@ -36,7 +36,8 @@ const Card = require('./models/card');
         answer: 'Yes!',
         status: 1,
         due: "2015-03-25",
-        deck: decks[0]
+        deck: decks[0],
+        user: users[0]
     }
 ]);
 process.exit();

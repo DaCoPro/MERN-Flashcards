@@ -58,7 +58,7 @@ export default function App() {
   dueCards.forEach(function(card) {
     if (!dueDecks.includes(card.deck)) dueDecks.push(card.deck);
   });
-
+  
 
   async function handleAddDeck (newDeckData) {
     const newDeck = await decksAPI.createDeck(newDeckData);
@@ -90,7 +90,7 @@ export default function App() {
             <NavBar  user={user} setUser={setUser} />
             <Switch>
               <Route path="/home">
-                <WelcomePage user={user} dueDecks={dueDecks} dueCards={dueCards}  />
+                <WelcomePage user={user} dueDecks={dueDecks} dueCards={dueCards} deck={deck} />
               </Route>
               <Route path="/decks">
                 <DecksPage 
@@ -113,7 +113,7 @@ export default function App() {
                 />
               </Route>
               <Route path="/study">
-                <StudyPage />
+                <StudyPage dueDecks={dueDecks} dueCards={dueCards} cards={cards} />
               </Route>
               <Route path="/edit">
                 <EditCardPage 

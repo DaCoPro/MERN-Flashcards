@@ -33,7 +33,7 @@ async function deleteCard(req, res) {
 
 async function deleteChildCards(req, res) {
   console.log(`David`)
-  const removedCards = await Card.deleteMany({deck: req.body})
+  const removedCards = await Card.deleteMany({deck: req.params.id})
 
   res.status(200).json(removedCards);
 }

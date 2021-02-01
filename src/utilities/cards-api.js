@@ -19,5 +19,5 @@ export function deleteCard(cardData) {
 }
 
 export function deleteChildCards(deckData) {
-    return sendRequest(`${BASE_URL}/${deckData._id}`, "DELETE");
+    return sendRequest(`${BASE_URL}/children/${deckData._id}`, "DELETE");
 }
