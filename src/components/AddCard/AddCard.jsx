@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 export default function AddDeck({ handleAddCard, showAddCard, setShowAddCard, activeCat, handleAddDeck, user, activeDeck }){
   let today = new Date();
-  const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+
   const history = useHistory();
   const [invalidForm, setValidForm] = useState(true);
   const [formData, setFormData] = useState({
@@ -21,7 +21,7 @@ export default function AddDeck({ handleAddCard, showAddCard, setShowAddCard, ac
     e.preventDefault()
     formData.user = user._id;
     formData.status = 1;
-    formData.due = date;
+    formData.due = today;
     formData.deck = activeDeck._id;
     console.log(formData);
 

@@ -20,8 +20,8 @@ export default function App() {
   const [cards, setCards] = useState([]);
   const [activeCat, setActiveCat] = useState('');
   const [activeDeck, setActiveDeck] = useState('');
-  const [activeCard, setActiveCard] = useState("");
-  
+  const [activeCard, setActiveCard] = useState('');
+
   useEffect(function() {
     async function getDecks() {
       if (user) {
@@ -41,6 +41,15 @@ export default function App() {
     }
     getCards();
   }, [user]);
+
+  //calculate due cards based on today's date and cache
+  let today = new Date();
+  var todayParsed = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  const dueCards = cards.filter(item => item.due <= todayParsed);
+  let dueDecks = [];
+  dueCards.forEach(function(card) {
+    if (!dueDecks.includes(card.deck)) dueDecks.push(card.deck);
+  });
 
 
   async function handleAddDeck (newDeckData) {
@@ -73,7 +82,7 @@ export default function App() {
             <NavBar  user={user} setUser={setUser} />
             <Switch>
               <Route path="/home">
-                <WelcomePage user={user}/>
+                <WelcomePage user={user} dueDecks={dueDecks} dueCards={dueCards}  />
               </Route>
               <Route path="/decks">
                 <DecksPage 

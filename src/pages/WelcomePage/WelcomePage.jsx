@@ -1,9 +1,11 @@
+import './WelcomePage.css';
 
+export default function WelcomePage ({ dueCards, dueDecks, user }) {
 
-export default function WelcomePage ({ user }) {
     return (
-        <main>
-            <h1>Welcome, {user.name}</h1>
+        <main className="WelcomePage">
+            <h1>Welcome, {user.name}!</h1>
+            <h2>You have {dueCards.length} cards to study, in {dueDecks.length} decks.</h2>
         </main>
     );
 }

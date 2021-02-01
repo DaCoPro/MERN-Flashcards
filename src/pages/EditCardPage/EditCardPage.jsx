@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {Link, useLocation} from 'react-router-dom';
 import * as cardsAPI from '../../utilities/cards-api';
+import './EditCardPage.css';
 
 export default function UpdateCardPage({ cards, setCards, user, activeCard, handleUpdateCard }){
 
@@ -34,8 +35,8 @@ export default function UpdateCardPage({ cards, setCards, user, activeCard, hand
   }
 
   return (
-    <>
-      <h1>Edit Route</h1>
+    <main className="EditCardPage">
+      <h1>Edit Card</h1>
       <form ref={formRef} autoComplete="off" onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Question:</label>
@@ -73,9 +74,9 @@ export default function UpdateCardPage({ cards, setCards, user, activeCard, hand
         >
           Save Card
         </button>&nbsp;&nbsp;
-        <button onClick={handleDeleteCard} />
+        <button className="DeleteBtn" onClick={handleDeleteCard} />
         <Link to='/decks'>CANCEL</Link>
       </form>
-    </>
+    </main>
   );
 }
