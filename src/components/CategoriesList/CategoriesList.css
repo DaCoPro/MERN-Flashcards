@@ -1,0 +1,10 @@
+.CategoriesList {
+    /* Common to Lists */
+    display: flex;
+    flex-direction: column;
+    
+    height: 100vh;
+
+    background-color: #254159;
+    color: white;
+}

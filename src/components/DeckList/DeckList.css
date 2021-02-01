@@ -1,3 +1,9 @@
 .DeckList {
-    background-color: blanchedalmond;
+    display: flex;
+    flex-direction: column;
+    
+    height: 100vh;
+    background-color: #2c5170;
+    color: white;
 }
+

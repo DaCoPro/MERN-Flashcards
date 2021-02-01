@@ -1,3 +1,4 @@
+import './AddDeck.css'
 import {React, useState, useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
@@ -36,10 +37,8 @@ export default function AddDeck({ showAddDeck, setShowAddDeck, activeCat, handle
 
   return (
     <>
-      <h1>New Deck</h1>
       <form autoComplete="off" ref={formRef} onSubmit={handleSubmit}>
         <div className="form-group">
-          <label>Deck Name</label>
           <input
             className="form-control"
             name="name"

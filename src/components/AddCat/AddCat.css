@@ -1,0 +1,10 @@
+.AddCat > form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    margin-top: 10px;
+    background-color: #f2f2f2;
+}

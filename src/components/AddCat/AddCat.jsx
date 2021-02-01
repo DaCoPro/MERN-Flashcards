@@ -1,3 +1,4 @@
+import './AddCat.css';
 import {React, useState, useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
@@ -31,11 +32,9 @@ export default function AddCat({ handleAddCat, user, setShowAddCat, showAddCat }
   }
 
   return (
-    <>
-      <h1>New Category</h1>
+    <main className="AddCat">
       <form autoComplete="off" ref={formRef} onSubmit={handleSubmit}>
         <div className="form-group">
-          <label>Subject Name</label>
           <input
             className="form-control"
             name="name"
@@ -53,7 +52,7 @@ export default function AddCat({ handleAddCat, user, setShowAddCat, showAddCat }
           Add
         </button>
       </form>
-    </>
+    </main>
   );
   
 }

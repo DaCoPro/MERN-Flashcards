@@ -40,7 +40,6 @@ export default function AddDeck({ handleAddCard, showAddCard, setShowAddCard, ac
 
   return (
     <>
-      <h1>New Deck</h1>
       <form autoComplete="off" ref={formRef} onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Question:</label>

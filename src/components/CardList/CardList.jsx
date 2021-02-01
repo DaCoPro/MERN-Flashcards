@@ -1,4 +1,4 @@
-import './CardList';
+import './CardList.css';
 import AddCard from '../AddCard/AddCard';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -27,16 +27,16 @@ export default function CardList({ activeCard, setActiveCard, cards, setCards, a
     }
 
     return (
-        <main>
+        <main className="CardList">
             <h2>{activeDeck.name} Cards:</h2>
             <div>
                 {cardList}
             </div>
             <div>
-            { activeDeck !== "" ? <button onClick={handleAddCardClick}></button> : null}
+            { activeDeck !== "" ? <button onClick={handleAddCardClick}>+</button> : null}
             
             { showAddCard > 0 ? <AddCard cards={cards} setCards={setCards} activeDeck={activeDeck} user={user} activeDeck={activeDeck} handleAddCard={handleAddCard} setShowAddCard={setShowAddCard}/> : null }
-            { activeDeck !== "" ? <button onClick={handleDeleteDeck}></button> : null}
+            { activeDeck !== "" ? <button onClick={handleDeleteDeck}>Delete {activeDeck.name}</button> : null}
             </div>
         </main>
 

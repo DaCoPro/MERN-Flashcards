@@ -14,26 +14,26 @@ export default function DeckList({ setActiveDeck, deck, setDeck, user, handleAdd
     }
 
     const decks = deck.map(deck =>
-        <li
+        <h3
           key={deck._id}
           className={deck === activeCat ? 'active' : ''}
           onClick={() => setActiveDeck(deck)}
         >
           {deck.name}
-        </li>
+        </h3>
     );
     return (
         
         <main className="DeckList">
-            <h2>{activeCat.name} Decks:</h2>
+            <h2>{activeCat.name} Decks</h2>
             <div>
                 {decks} 
             </div>
             <div>
-                { activeCat !== "" ? <button onClick={handleAddDeckClick}></button> : null}
+                { activeCat !== "" ? <button onClick={handleAddDeckClick}>+</button> : null}
             
             { showAddDeck > 0 ? <AddDeck user={user} showAddDeck={showAddDeck} setShowAddDeck={setShowAddDeck} activeCat={activeCat} handleAddDeck={handleAddDeck} /> : null }
-                { activeCat !== "" ? <button onClick={handleDeleteCat}></button>  : null }
+                { activeCat !== "" ? <button className="DeleteButton" onClick={handleDeleteCat}>Delete {activeCat.name}</button>  : null }
             </div>
         </main>
     )

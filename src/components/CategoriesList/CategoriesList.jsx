@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './CategoriesList';
+import './CategoriesList.css';
 import AddCat from '../AddCat/AddCat';
 
 export default function CategoriesList(props) {
@@ -12,23 +12,24 @@ export default function CategoriesList(props) {
     }
 
     const cats = props.cats.map(cat =>
-        <li
+        <h3
           key={cat._id}
           className={cat === props.activeCat ? 'active' : ''}
           onClick={() => handlePickCat(cat)}
         //   onClick={() => props.setActiveDeck("")}
         >
           {cat.name}
-        </li>
+        </h3>
     );
     return (
         <main className="CategoriesList">
-            <h2>Subjects:</h2>
+            <h2>Subjects</h2>
             <div>
                  {cats}
+                 <h3></h3>
             </div>
             <div>
-                <button onClick={handleAddCatClick}></button>
+                <button className="AddClass" onClick={handleAddCatClick}>+</button>
                 { showAddCat > 0 ? <AddCat user={props.user} showAddCat={showAddCat} setShowAddCat={setShowAddCat} activeCat={props.activeCat} handleAddCat={props.handleAddCat} /> : null }
             </div>
         </main>
