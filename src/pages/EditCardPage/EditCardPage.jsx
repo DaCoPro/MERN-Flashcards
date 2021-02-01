@@ -1,14 +1,16 @@
 import React, {useState, useEffect, useRef} from 'react';
-import {Link, useLocation} from 'react-router-dom';
+import {Link, useLocation, useHistory} from 'react-router-dom';
 import * as cardsAPI from '../../utilities/cards-api';
 import './EditCardPage.css';
 
 export default function UpdateCardPage({ cards, setCards, user, activeCard, handleUpdateCard }){
 
+  const history = useHistory();
   async function handleDeleteCard() {
     await cardsAPI.deleteCard(activeCard);
     const cards = await cardsAPI.getAll();
     setCards(cards);
+    history.push('/decks');
   }
 
   const location = useLocation()
@@ -74,9 +76,9 @@ export default function UpdateCardPage({ cards, setCards, user, activeCard, hand
         >
           Save Card
         </button>&nbsp;&nbsp;
-        <button className="DeleteBtn" onClick={handleDeleteCard} />
-        <Link to='/decks'>CANCEL</Link>
       </form>
+        <Link to='/decks'>Back</Link>
+        <button className="DeleteBtn" onClick={handleDeleteCard} />
     </main>
   );
 }

@@ -17,3 +17,7 @@ export function updateCard(cardData) {
 export function deleteCard(cardData) {
     return sendRequest(`${BASE_URL}/${cardData._id}`, "DELETE");
 }
+
+export function deleteChildCards(deckData) {
+    return sendRequest(`${BASE_URL}/${deckData._id}`, "DELETE");
+}

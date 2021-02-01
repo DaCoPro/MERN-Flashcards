@@ -42,6 +42,14 @@ export default function App() {
     getCards();
   }, [user]);
 
+  useEffect(function() {
+    async function getCats() {
+      const cats = await catsAPI.getAll();
+      setCats(cats);
+    }
+    getCats();
+  }, []); 
+
   //calculate due cards based on today's date and cache
   let today = new Date();
   var todayParsed = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();

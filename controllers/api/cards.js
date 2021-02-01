@@ -4,7 +4,8 @@ module.exports = {
   index,
   createCard,
   updateCard,
-  deleteCard
+  deleteCard,
+  deleteChildCards
 };
 
 async function index(req, res) {
@@ -13,7 +14,6 @@ async function index(req, res) {
 }
 
 async function createCard(req, res) {
-  
   let cardData = req.body;
   let newCard = await Card.create(cardData);
   return res.json(newCard)
@@ -29,4 +29,11 @@ async function updateCard(req, res) {
 async function deleteCard(req, res) {
   const removedCard = await Card.findByIdAndRemove(req.params.id);
   res.status(200).json(removedCard);
+}
+
+async function deleteChildCards(req, res) {
+  console.log(`David`)
+  const removedCards = await Card.deleteMany({deck: req.body})
+
+  res.status(200).json(removedCards);
 }

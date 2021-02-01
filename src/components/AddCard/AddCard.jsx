@@ -1,3 +1,4 @@
+import './AddCard.css';
 import {React, useState, useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
@@ -23,10 +24,8 @@ export default function AddDeck({ handleAddCard, showAddCard, setShowAddCard, ac
     formData.status = 1;
     formData.due = today;
     formData.deck = activeDeck._id;
-    console.log(formData);
-
-    handleAddCard(formData);
     setShowAddCard(showAddCard * -1);
+    handleAddCard(formData);
     history.push('/decks');
   }
 

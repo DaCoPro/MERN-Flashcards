@@ -4,22 +4,11 @@ import DeckList from '../../components/DeckList/DeckList';
 import CategoriesList from '../../components/CategoriesList/CategoriesList';
 import CardList from '../../components/CardList/CardList';
 import * as decksAPI from '../../utilities/decks-api';
-import * as catsAPI from '../../utilities/cats-api';
-import { useState, useEffect, useRef } from 'react';
+import { useRef } from 'react';
 
 export default function DecksPage({ activeCard, setActiveCard, cards, setCards, handleAddCard, activeDeck, setActiveDeck, handleAddDeck, user, deck, setDeck, cats, setCats, handleAddCat, activeCat, setActiveCat}) {
-    
-    
-    const categoriesRef = useRef([]);
 
-    useEffect(function() {
-        async function getCats() {
-          const cats = await catsAPI.getAll();
-          setCats(cats);
-        }
-        getCats();
-    }, []);
-    
+    const categoriesRef = useRef([]);
 
     return (
         <main className="DecksPage">
@@ -44,6 +33,7 @@ export default function DecksPage({ activeCard, setActiveCard, cards, setCards, 
                     activeDeck={activeDeck}
                     setActiveDeck={setActiveDeck}
                     setCats={setCats}
+                    setActiveCat={setActiveCat}
                 />
             </div>
             <div>
@@ -56,6 +46,8 @@ export default function DecksPage({ activeCard, setActiveCard, cards, setCards, 
                     setCards={setCards}
                     activeCard={activeCard}
                     setActiveCard={setActiveCard}
+                    deck={deck}
+                    setActiveDeck={setActiveDeck}
                 />
             </div>
         </main>

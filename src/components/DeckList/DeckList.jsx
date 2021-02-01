@@ -2,15 +2,21 @@ import './DeckList.css';
 import * as catsAPI from '../../utilities/cats-api';
 import { useState, useEffect } from 'react';
 import AddDeck from '../AddDeck/AddDeck';
+import { useHistory } from 'react-router-dom';
 
-export default function DeckList({ setActiveDeck, deck, setDeck, user, handleAddDeck, activeCat, setCats }) {
+export default function DeckList({ setActiveDeck, deck, setDeck, user, handleAddDeck, activeCat, setCats, setActiveCat}) {
     const [showAddDeck, setShowAddDeck] = useState(-1);
     const handleAddDeckClick = () => setShowAddDeck(showAddDeck * -1)
+    const history = useHistory();
 
     async function handleDeleteCat() {
         await catsAPI.deleteCat(activeCat);
         const cats = await catsAPI.getAll();
         setCats(cats);
+        setActiveCat('');
+        setActiveDeck('');
+        history.push('/decks');
+
     }
 
     const decks = deck.map(deck =>

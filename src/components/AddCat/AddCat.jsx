@@ -8,7 +8,6 @@ export default function AddCat({ handleAddCat, user, setShowAddCat, showAddCat }
   const [formData, setFormData] = useState({
     name: '',
   })
-  console.log(user.name);
   const formRef = useRef();
 
   useEffect(() => {
@@ -18,7 +17,6 @@ export default function AddCat({ handleAddCat, user, setShowAddCat, showAddCat }
   const handleSubmit = (e) => {
     e.preventDefault()
     formData.user = user._id;
-    console.log(formData);
     handleAddCat(formData);
     setShowAddCat(showAddCat * -1);
     history.push('/decks');

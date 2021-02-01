@@ -9,7 +9,6 @@ module.exports = {
 
 async function index(req, res) {
   const decks = await Deck.find({user:req.user._id});
-  
   return res.status(200).json(decks);
 }
 
@@ -19,12 +18,8 @@ async function createDeck(req, res) {
   return res.json(newDeck)
 }
 
-async function addCard(req, res) {
-  const deck = await Deck.findById(req.body.deck);
-  deck.cards.push(req.body);
-  deck.save();
-  return res.json(deck.cards);
-}
+//obsolete but when deleted, deckspage crashes.
+async function addCard(req, res) {}
 
 async function deleteDeck(req, res) {
   const removedDeck = await Deck.findByIdAndRemove(req.params.id);
