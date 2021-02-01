@@ -6,6 +6,10 @@ export function getAll() {
     return sendRequest(BASE_URL);
 }
 
-export function createDeck(deckData) {
-    return sendRequest(BASE_URL, "POST", deckData);
+export function createDeck(newDeckData) {
+    return sendRequest(BASE_URL, "POST", newDeckData);
+}
+
+export function createCard(newCardData) {
+    return sendRequest(`${BASE_URL}/${newCardData.deck}/addCard`, "PUT", newCardData)
 }

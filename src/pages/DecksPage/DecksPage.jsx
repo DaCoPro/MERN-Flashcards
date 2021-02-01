@@ -7,7 +7,7 @@ import * as decksAPI from '../../utilities/decks-api';
 import * as catsAPI from '../../utilities/cats-api';
 import { useState, useEffect, useRef } from 'react';
 
-export default function DecksPage({ activeDeck, setActiveDeck, handleAddDeck, user, deck, setDeck, cats, setCats, handleAddCat, activeCat, setActiveCat}) {
+export default function DecksPage({ handleAddCard, activeDeck, setActiveDeck, handleAddDeck, user, deck, setDeck, cats, setCats, handleAddCat, activeCat, setActiveCat}) {
     
     
     const categoriesRef = useRef([]);
@@ -48,8 +48,9 @@ export default function DecksPage({ activeDeck, setActiveDeck, handleAddDeck, us
             </div>
             <div>
                 <CardList  
-                    
-                    activeDeck={activeDeck}  
+                    handleAddCard={handleAddCard}
+                    activeDeck={activeDeck}
+                    user={user}  
                 />
             </div>
         </main>

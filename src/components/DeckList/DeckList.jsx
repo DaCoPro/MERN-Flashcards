@@ -8,9 +8,6 @@ export default function DeckList({ setActiveDeck, deck, setDeck, user, handleAdd
     const [showAddDeck, setShowAddDeck] = useState(-1);
     const handleAddDeckClick = () => setShowAddDeck(showAddDeck * -1)
 
-    // const showDecks = deck.map(item => 
-    //     <DeckListItem key={item._id} deck={item} />
-    // );
     const decks = deck.map(deck =>
         <li
           key={deck._id}
@@ -28,7 +25,8 @@ export default function DeckList({ setActiveDeck, deck, setDeck, user, handleAdd
                 {decks} 
             </div>
             <div>
-            <button onClick={handleAddDeckClick}></button>
+                { activeCat !== "" ? <button onClick={handleAddDeckClick}></button> : null}
+            
             { showAddDeck > 0 ? <AddDeck user={user} showAddDeck={showAddDeck} setShowAddDeck={setShowAddDeck} activeCat={activeCat} handleAddDeck={handleAddDeck} /> : null }
             </div>
         </main>

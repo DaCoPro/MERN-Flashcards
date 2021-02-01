@@ -40,6 +40,11 @@ export default function App() {
     const newCat = await catsAPI.createCat(newCatData);
     setCats([...cats, newCat])
   }
+  
+  async function handleAddCard (newCardData) {
+    const newDeck = await decksAPI.createCard(newCardData);
+    setDeck([...deck, newDeck])
+  }
 
   return (
     <main className="App">
@@ -63,6 +68,7 @@ export default function App() {
                   handleAddDeck={handleAddDeck}
                   activeDeck={activeDeck}
                   setActiveDeck={setActiveDeck}
+                  handleAddCard={handleAddCard}
                 />
               </Route>
               <Route path="/study">
