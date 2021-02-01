@@ -25,6 +25,7 @@ app.use(require('./config/checkToken'));
 const ensureLoggedIn = require('./config/ensureLoggedIn');
 app.use('/api/categories', ensureLoggedIn, require('./routes/api/categories'));
 app.use('/api/decks', ensureLoggedIn, require('./routes/api/decks'));
+app.use('/api/cards', ensureLoggedIn, require('./routes/api/cards'));
 app.use('/api/users', require('./routes/api/users'));
 
 // The following "catch all" route (note the *) is necessary

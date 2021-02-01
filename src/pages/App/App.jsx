@@ -3,6 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
 import * as decksAPI from '../../utilities/decks-api';
 import * as catsAPI from '../../utilities/cats-api';
+import * as cardsAPI from '../../utilities/cards-api';
 import './App.css';
 import AuthPage from '../AuthPage/AuthPage';
 import EditCardPage from '../EditCardPage/EditCardPage';
@@ -16,8 +17,10 @@ export default function App() {
   const [user, setUser] = useState(getUser());
   const [deck, setDeck] = useState([]);
   const [cats, setCats] = useState([]);
+  const [cards, setCards] = useState([]);
   const [activeCat, setActiveCat] = useState('');
   const [activeDeck, setActiveDeck] = useState('');
+  const [activeCard, setActiveCard] = useState("");
   
   useEffect(function() {
     async function getDecks() {
@@ -28,6 +31,17 @@ export default function App() {
     }
     getDecks();
   }, [user]);
+  
+  useEffect(function() {
+    async function getCards() {
+      if (user) {
+        const cards = await cardsAPI.getAll();
+        setCards(cards);
+      }
+    }
+    getCards();
+  }, [user]);
+
 
   async function handleAddDeck (newDeckData) {
     const newDeck = await decksAPI.createDeck(newDeckData);
@@ -40,8 +54,8 @@ export default function App() {
   }
   
   async function handleAddCard (newCardData) {
-    const newDeck = await decksAPI.createCard(newCardData);
-    setDeck([...deck, newDeck])
+    const newCard = await cardsAPI.createCard(newCardData);
+    setCards([...cards, newCard])
   }
 
   return (
@@ -67,6 +81,10 @@ export default function App() {
                   activeDeck={activeDeck}
                   setActiveDeck={setActiveDeck}
                   handleAddCard={handleAddCard}
+                  cards={cards}
+                  setCards={setCards}
+                  activeCard={activeCard}
+                  setActiveCard={setActiveCard}
                 />
               </Route>
               <Route path="/study">

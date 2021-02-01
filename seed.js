@@ -4,6 +4,7 @@ require('./config/database');
 const User = require('./models/user');
 const Category = require('./models/category');
 const Deck = require('./models/deck');
+const Card = require('./models/card');
 
 (async function () {
 
@@ -18,18 +19,26 @@ const Deck = require('./models/deck');
         user: users[0]}
     ]);
 
+    
+    
     await Deck.deleteMany({});
     const decks = await Deck.create([
         {name: 'Welcome', 
-        category: categories[0], 
-        cards: [{
-            question: 'Will this work?',
-            answer: 'Yes!',
-            status: 1,
-            due: "2015-03-25"
-        }], 
+        category: categories[0],  
         user: users[0]}
     ]);
-    console.log(decks)
-    process.exit();
+    
+    
+    
+    await Card.deleteMany({});
+    const cards = await Card.create([{
+        question: 'Will this work?',
+        answer: 'Yes!',
+        status: 1,
+        due: "2015-03-25",
+        deck: decks[0]
+    }
+]);
+process.exit();
+
 })();

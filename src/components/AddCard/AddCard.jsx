@@ -19,6 +19,7 @@ export default function AddDeck({ handleAddCard, showAddCard, setShowAddCard, ac
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    formData.user = user._id;
     formData.status = 1;
     formData.due = date;
     formData.deck = activeDeck._id;

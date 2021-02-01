@@ -23,7 +23,6 @@ async function addCard(req, res) {
   const deck = await Deck.findById(req.body.deck);
   deck.cards.push(req.body);
   deck.save();
-  console.log(deck.cards)
   return res.json(deck.cards);
 }
 
