@@ -58,6 +58,14 @@ export default function App() {
     setCards([...cards, newCard])
   }
 
+  async function handleUpdateCard (updatedCardData) {
+    const updatedCard = await cardsAPI.updateCard(updatedCardData);
+    const newCardsArray = cards.map(c =>
+      c._id === updatedCard._id ? updatedCard : c
+    );
+    setCards(newCardsArray);
+  }
+
   return (
     <main className="App">
       { user ? 
@@ -91,7 +99,13 @@ export default function App() {
                 <StudyPage />
               </Route>
               <Route path="/edit">
-                <EditCardPage />
+                <EditCardPage 
+                  activeCard={activeCard}
+                  handleUpdateCard={handleUpdateCard}
+                  user={user}
+                  cards={cards}
+                  setCards={setCards}
+                />
               </Route>
               
               <Redirect to="/home" user={user}/>

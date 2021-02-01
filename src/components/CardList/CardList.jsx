@@ -1,5 +1,6 @@
 import './CardList';
 import AddCard from '../AddCard/AddCard';
+import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import * as catsAPI from '../../utilities/cats-api';
 import * as decksAPI from '../../utilities/decks-api';
@@ -14,7 +15,7 @@ export default function CardList({ activeCard, setActiveCard, cards, setCards, a
           key={card._id}
           onClick={() => setActiveCard(card)}
         >
-          {card.question}
+          <Link to="/edit">{card.question}</Link>
           
         </li>
     );

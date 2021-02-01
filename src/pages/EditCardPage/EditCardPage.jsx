@@ -1,7 +1,14 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {Link, useLocation} from 'react-router-dom';
+import * as cardsAPI from '../../utilities/cards-api';
 
-export default function UpdateCardPage({ activeCard }){
+export default function UpdateCardPage({ cards, setCards, user, activeCard, handleUpdateCard }){
+
+  async function handleDeleteCard() {
+    await cardsAPI.deleteCard(activeCard);
+    const cards = await cardsAPI.getAll();
+    setCards(cards);
+  }
 
   const location = useLocation()
 
@@ -16,7 +23,7 @@ export default function UpdateCardPage({ activeCard }){
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // handleUpdateRoute(formData);
+    handleUpdateCard(formData);
   }
 
   const handleChange = (e) => {
@@ -31,32 +38,32 @@ export default function UpdateCardPage({ activeCard }){
       <h1>Edit Route</h1>
       <form ref={formRef} autoComplete="off" onSubmit={handleSubmit}>
         <div className="form-group">
-          <label>Routes Name</label>
+          <label>Question:</label>
           <input
             className="form-control"
-            name="name"
-            value={ formData.name}
-            onChange={ handleChange}
+            name="question"
+            value={ formData.question }
+            onChange={ handleChange }
             required
           />
         </div>
         <div className="form-group">
-          <label>Routes Grade</label>
+          <label>Answer:</label>
           <input
             className="form-control"
-            name="grade"
-            value={ formData.grade}
-            onChange={ handleChange}
+            name="answer"
+            value={ formData.answer }
+            onChange={ handleChange }
             required
           />
         </div>
         <div className="form-group">
-          <label>Describe It!</label>
+          <label>Status</label>
           <input
             className="form-control"
-            name="description"
-            value={ formData.description}
-            onChange={ handleChange}
+            name="status"
+            value={ formData.status }
+            onChange={ handleChange }
           />
         </div>
         <button
@@ -64,9 +71,10 @@ export default function UpdateCardPage({ activeCard }){
           className="btn btn-xs"
           disabled={invalidForm}
         >
-          Save Route
+          Save Card
         </button>&nbsp;&nbsp;
-        <Link to='/'>CANCEL</Link>
+        <button onClick={handleDeleteCard} />
+        <Link to='/decks'>CANCEL</Link>
       </form>
     </>
   );
