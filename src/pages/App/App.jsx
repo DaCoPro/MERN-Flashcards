@@ -55,11 +55,19 @@ export default function App() {
   //calculate due cards based on today's date and cache
   let today = new Date();
   var todayParsed = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  
   const dueCards = cards.filter(item => item.due <= todayParsed);
+  let dueDeckIds =[];
   let dueDecks = [];
   dueCards.forEach(function(card) {
-    if (!dueDecks.includes(card.deck)) dueDecks.push(card.deck);
+    if (!dueDeckIds.includes(card.deck)) dueDeckIds.push(card.deck);
+    console.log(card.due)
   });
+ deck.forEach(function(d) {
+   if (dueDeckIds.includes(d._id)) {
+     dueDecks.push(d);
+   }
+ })
   
 
   async function handleAddDeck (newDeckData) {
@@ -120,6 +128,7 @@ export default function App() {
                   dueCards={dueCards} 
                   cards={cards}
                   setActiveDeck={setActiveDeck}
+                  handleUpdateCard={handleUpdateCard}
                 />
               </Route>
               <Route path="/edit">
