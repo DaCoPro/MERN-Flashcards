@@ -3,7 +3,6 @@ import './DecksPage.css';
 import DeckList from '../../components/DeckList/DeckList';
 import CategoriesList from '../../components/CategoriesList/CategoriesList';
 import CardList from '../../components/CardList/CardList';
-import * as decksAPI from '../../utilities/decks-api';
 import { useRef } from 'react';
 
 export default function DecksPage({ activeCard, setActiveCard, cards, setCards, handleAddCard, activeDeck, setActiveDeck, handleAddDeck, user, deck, setDeck, cats, setCats, handleAddCat, activeCat, setActiveCat}) {
@@ -34,6 +33,8 @@ export default function DecksPage({ activeCard, setActiveCard, cards, setCards, 
                     setActiveDeck={setActiveDeck}
                     setCats={setCats}
                     setActiveCat={setActiveCat}
+                    setCards={setCards}
+                    setDeck={setDeck}
                 />
             </div>
             <div>

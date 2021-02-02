@@ -16,7 +16,6 @@ export default function AddCat({ handleAddCat, user, setShowAddCat, showAddCat }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    formData.user = user._id;
     handleAddCat(formData);
     setShowAddCat(showAddCat * -1);
     history.push('/decks');

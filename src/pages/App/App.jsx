@@ -44,11 +44,13 @@ export default function App() {
 
   useEffect(function() {
     async function getCats() {
-      const cats = await catsAPI.getAll();
-      setCats(cats);
+      if (user) {
+        const cats = await catsAPI.getAll();
+        setCats(cats);
+      }
     }
     getCats();
-  }, []); 
+  }, [user]); 
 
   //calculate due cards based on today's date and cache
   let today = new Date();

@@ -19,7 +19,6 @@ export default function AddDeck({ showAddDeck, setShowAddDeck, activeCat, handle
     e.preventDefault()
     formData.category = activeCat;
     formData.cards = [];
-    formData.user = user._id;
 
     console.log(formData);
     handleAddDeck(formData);
