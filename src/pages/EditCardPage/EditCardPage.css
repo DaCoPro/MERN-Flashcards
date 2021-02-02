@@ -1,8 +1,13 @@
 
 .EditCardPage {
     background-color: #34516D;
+    color: white;
 }
 
 .DeleteBtn {
     background-color: red;
+}
+
+.SaveButton {
+    background-color: green;
 }

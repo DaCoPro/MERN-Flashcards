@@ -72,13 +72,14 @@ export default function UpdateCardPage({ cards, setCards, user, activeCard, hand
         <button
           type="submit"
           className="btn btn-xs"
+          
           disabled={invalidForm}
         >
           Save Card
         </button>&nbsp;&nbsp;
       </form>
         <Link to='/decks'>Back</Link>
-        <button className="DeleteBtn" onClick={handleDeleteCard} />
+        <button className="DeleteBtn" onClick={handleDeleteCard} >Delete</button>
     </main>
   );
 }

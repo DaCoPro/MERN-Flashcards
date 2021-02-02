@@ -115,7 +115,12 @@ export default function App() {
                 />
               </Route>
               <Route path="/study">
-                <StudyPage dueDecks={dueDecks} dueCards={dueCards} cards={cards} />
+                <StudyPage 
+                  dueDecks={dueDecks} 
+                  dueCards={dueCards} 
+                  cards={cards}
+                  setActiveDeck={setActiveDeck}
+                />
               </Route>
               <Route path="/edit">
                 <EditCardPage 

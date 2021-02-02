@@ -35,7 +35,7 @@ export default function CardList({ activeCard, setActiveCard, cards, setCards, a
 
     return (
         <main className="CardList">
-            <h2>{activeDeck.name} Cards:</h2>
+            <h2>{activeDeck.name} Cards</h2>
             <div>
                 {cardList}
             </div>
