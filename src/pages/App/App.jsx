@@ -54,21 +54,21 @@ export default function App() {
 
   //calculate due cards based on today's date and cache
   let today = new Date();
-  var todayParsed = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  // var todayParsed = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  const dueCards = cards.filter(item => item.due <= today.toISOString());
   
-  const dueCards = cards.filter(item => item.due <= todayParsed);
   let dueDeckIds =[];
+
   let dueDecks = [];
   dueCards.forEach(function(card) {
     if (!dueDeckIds.includes(card.deck)) dueDeckIds.push(card.deck);
-    console.log(card.due)
+    
   });
  deck.forEach(function(d) {
    if (dueDeckIds.includes(d._id)) {
      dueDecks.push(d);
    }
  })
-  
 
   async function handleAddDeck (newDeckData) {
     const newDeck = await decksAPI.createDeck(newDeckData);
